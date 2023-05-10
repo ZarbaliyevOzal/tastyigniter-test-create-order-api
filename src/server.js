@@ -6,7 +6,7 @@ const fs = require('fs');
 app.use(express.json());
 
 app.post('/orders', (req, res) => {
-  const body = JSON.stringify(req.body);
+  const body = JSON.stringify(req.body, null, 2);
 
   if (!body) {
     return res.status(200)
@@ -15,8 +15,9 @@ app.post('/orders', (req, res) => {
 
   if (body) {
     fs.appendFileSync(__dirname + "/tmp/test.txt",
-      new Date() + "\n" + body + "\n"
-      + "\n\n\n\n\n\n\n\n\n\n\n");
+      new Date() + "\n" + body);
+    fs.appendFileSync(__dirname + "/tmp/test.txt",
+      "-----------------------------------")
   }
 
   return res.status(200).json({
