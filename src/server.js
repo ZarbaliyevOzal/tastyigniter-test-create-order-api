@@ -17,7 +17,7 @@ app.post('/orders', (req, res) => {
     fs.appendFileSync(__dirname + "/tmp/test.txt",
       new Date() + "\n" + body);
     fs.appendFileSync(__dirname + "/tmp/test.txt",
-      "-----------------------------------")
+      "\n-----------------------------------")
   }
 
   return res.status(200).json({
